@@ -1,13 +1,13 @@
-//  /$$      /$$           /$$ /$$         /$$$$$$$$
-// | $$  /$ | $$          | $$| $$        | $$_____/
-// | $$ /$$$| $$  /$$$$$$ | $$| $$        | $$      
-// | $$/$$ $$ $$ |____  $$| $$| $$ /$$$$$$| $$$$$   
-// | $$$$_  $$$$  /$$$$$$$| $$| $$|______/| $$__/   
-// | $$$/ \  $$$ /$$__  $$| $$| $$        | $$      
-// | $$/   \  $$|  $$$$$$$| $$| $$        | $$$$$$$$
-// |__/     \__/ \_______/|__/|__/        |________/
+// /$$$$$$$                      /$$                           /$$$$$$$                     /$$          
+// | $$__  $$                    | $$                          | $$__  $$                   |__/          
+// | $$  \ $$  /$$$$$$   /$$$$$$ | $$   /$$  /$$$$$$  /$$$$$$$ | $$  \ $$  /$$$$$$  /$$$$$$  /$$ /$$$$$$$ 
+// | $$$$$$$  /$$__  $$ /$$__  $$| $$  /$$/ /$$__  $$| $$__  $$| $$$$$$$  /$$__  $$|____  $$| $$| $$__  $$
+// | $$__  $$| $$  \__/| $$  \ $$| $$$$$$/ | $$$$$$$$| $$  \ $$| $$__  $$| $$  \__/ /$$$$$$$| $$| $$  \ $$
+// | $$  \ $$| $$      | $$  | $$| $$_  $$ | $$_____/| $$  | $$| $$  \ $$| $$      /$$__  $$| $$| $$  | $$
+// | $$$$$$$/| $$      |  $$$$$$/| $$ \  $$|  $$$$$$$| $$  | $$| $$$$$$$/| $$     |  $$$$$$$| $$| $$  | $$
+// |_______/ |__/       \______/ |__/  \__/ \_______/|__/  |__/|_______/ |__/      \_______/|__/|__/  |__/
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// AUTHOR : Mr TechX | TecnoProjects Srcurity
+// AUTHOR : TechX | TecnoProjects Srcurity
 // PROJECT : BrokenBrain Bot (Telegram Version)
 // VERSION : 1.0.0
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -39,6 +39,9 @@ const bot = new Telegraf(config.token);
 //----------------[Variables]----------------
 var prefix = "b_";
 var version = "v1.0.0";
+var fechaP = "13/Nov/2022";
+var skull = "💀";
+var fire = "🔥";
 
 //----------------[Variables Crypto]----------------
 let btcvar = "40228.60 USD - 816282.55 MXN";
@@ -49,4 +52,72 @@ let dogevar = "0.14 USD - 2.84 MXN";
 let fecha = "(Actualización 18/Feb/2022)";
 
 //--------------[Mensaje de Consola]--------------
-console.log("Wall-E Activado");
+console.log("BrokenBrain Activado");
+
+//----------------[Comandos Centrales]----------------
+bot.start((ctx) => {
+    console.log(ctx.form)
+    console.log(ctx.chat)
+    console.log(ctx.message)
+    console.log(ctx.updateSubTypes)
+
+    ctx.reply('Hola!! Bienvenid@ ' + ctx.from.first_name + ',' + ' yo soy el bot oficial de BrokenBrain, puedes ejecutar el comando /all_cmds para ver todos mis comandos o usa /menu para ver el menu de comandos simple' +  fire + ' \n\nO si eres un usuario VIP escribe /SoyVip')
+});
+
+bot.command('status', (ctx) => {
+    ctx.reply("Todo bien por ahora, mi sistema funciona correctamente, quieres ver como funcionoo? ejecuta el comando /my_code y verás todas mis lineas de codigo" + skull)
+});
+
+bot.command('hola', (ctx) => {
+    ctx.reply("Hola!! " + ctx.from.first_name + " soy el Bot de BrokenBrain")
+});
+
+bot.command('version', (ctx) => {
+    ctx.reply("Actualmente estoy en mi verison 1.0.0 que fue lanzada el " + fechaP +  " por TecnoProjects Security | @Mr_TechX")
+});
+
+bot.command('version_logs', (ctx) => {
+    ctx.reply("REGISTRO DE MODIFICACIONES:\nLanzamiento del Bot - " + fechaP)
+});
+
+bot.command('my_code', (ctx) => {
+    ctx.reply("Puedes ver mi codigo fuente en el Github de mi programador, ahi puedes ver mis versiones pasadas y mi version actual en el lado del codigo https://github.com/Mr-TechX/BrokenBrainTG_Bot")
+});
+
+bot.command('my_developer', (ctx) => {
+    ctx.reply("My programador tiene como Nombre MrTechX en casi todos lados, puedes ver sus redes si ejecutas el comando /dev_networks")
+});
+
+//-----------------[Soporte]-----------------
+bot.on('text', ctx => {
+        if(ctx.chat.type == 'private'){
+            ctx.reply('Debes ejecutar un comando para interactuar conmigo, necesito una orden especifica para funcionar.')
+}});
+    
+bot.on('sticker', ctx => {
+        if(ctx.chat.type == 'private'){
+            ctx.reply('Buen sticker mi joven hacker😎')
+}});
+
+bot.on('photo', ctx => {
+    if(ctx.chat.type == 'private'){
+        ctx.reply('Aun no estoy programado para poder ver fotos o imagenes parece que no es necesario para mis funciones')
+}});
+
+bot.on('audio', ctx => {
+    if(ctx.chat.type == 'private'){
+        ctx.reply('No cuento con librerias para escuchar audios, tal vez en un futuro pueda hacerlo.')
+}});
+
+bot.on('voice', ctx => {
+    if(ctx.chat.type == 'private'){
+        ctx.reply('Parece que no estoy programado para escuchar tus notas de voz ¿podrias ejecutar un comando?')
+}});
+
+bot.on('video', ctx => {
+    if(ctx.chat.type == 'private'){
+        ctx.reply('interesante video colega, pero un bot no puede hacer nada con esa informacion, ejecuta un comando por favor')
+}});
+
+//----------------[Lanzamiento]----------------
+bot.launch();
